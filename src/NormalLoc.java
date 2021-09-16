@@ -1,11 +1,3 @@
-public class NormalLoc extends Location {
-    @Override
-    public boolean onLocation() {
-        return true;
-    }
+abstract class NormalLoc extends Location {
 
-    @Override
-    void location() {
-        // TODO Auto-generated method stub
-    }
 }
