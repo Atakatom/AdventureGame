@@ -1,12 +1,13 @@
-public class game {
+public class Game {
     Player player;
     Location location;
 
-    public game() {
+    Game() {
         player = new Player();
     }
 
     public void start() {
 
     }
+
 }
