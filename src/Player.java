@@ -7,15 +7,12 @@ public class Player {
     boolean warriorIsSummoned = false;
 
     public Player() {
-        selectChar();
+        // selectChar();
     }
 
     protected void selectChar() {
         if (!warriorIsSummoned) {
-            System.out.println(
-                    "WELCOME! BRAVE WARRIOR.. \n Announce your name so the whole world could shake from your might!!");
             Scanner input = new Scanner(System.in);
-            this.name = input.nextLine();
             System.out.println("Just so you know the journey ahaed of you is not meant for the shilly-shally");
             System.out.println("Now your first action to choose is how you define yourself in battlefield...");
             while (!warriorIsSummoned) {
