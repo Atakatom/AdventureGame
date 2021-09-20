@@ -5,7 +5,6 @@ abstract class NormalLoc extends Location {
 
     @Override
     boolean onLocation() {
-        System.out.println("Welcome to the Tool Store");
         return true;
     }
 }

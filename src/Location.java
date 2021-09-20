@@ -1,6 +1,9 @@
+import java.util.Scanner;
+
 abstract class Location {
     private Player player;
     private String name;
+    protected Scanner input = new Scanner(System.in);
 
     public Location(Player player, String name) {
         this.player = player;
