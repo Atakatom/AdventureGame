@@ -22,7 +22,7 @@ public class Player {
             while (!warriorIsSummoned) {
                 int a = 1;
                 for (GameChar i : charList) {
-                    System.out.println("id : " + a + " " + i.toString());
+                    System.out.println("id : " + a + " - " + i.toString());
                     a++;
                 }
                 System.out.println("\n-------------------------------------------------------");

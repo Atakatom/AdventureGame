@@ -32,22 +32,23 @@ public class ToolStore extends NormalLoc {
                     break;
             }
         }
-        input.close();
         return true;
     }
 
     public void printWeapon() {
-        System.out.println("WEAPON    ID    DAMAGE    COST");
-        System.out.println("CrossBow  1     2         25");
-        System.out.println("Wand      2     3         35");
-        System.out.println("Sword     3     7         45");
+        System.out.println("\n--------Weapons--------\n");
+        for (Weapon w : Weapon.listOptions()) {
+            System.out.println(
+                    w.getId() + " - " + w.getName() + "\tDamage: " + w.getDamage() + "\tPrice: " + w.getPrice());
+        }
     }
 
     public void printArmour() {
-        System.out.println("ARMOUR    ID    DEFENCE   COST");
-        System.out.println("Light     1     1         15");
-        System.out.println("Medium    2     3         25");
-        System.out.println("Heavy     3     5         40");
+        System.out.println("\n--------Armours--------\n");
+        for (Armour a : Armour.listOptions()) {
+            System.out.println(
+                    a.getId() + " - " + a.getName() + "\tDefence: " + a.getDefence() + "\tPrice: " + a.getPrice());
+        }
     }
 
     public void buy() {

@@ -14,8 +14,8 @@ public class Armour extends Tool {
         this.defence = defence;
     }
 
-    public Tool[] listOptions() {
-        Tool[] armourList = new Tool[3];
+    public static Armour[] listOptions() {
+        Armour[] armourList = new Armour[3];
         armourList[0] = new Armour(1, "Light", 1, 15);
         armourList[1] = new Armour(2, "Medium", 3, 25);
         armourList[2] = new Armour(3, "Heavy", 5, 40);

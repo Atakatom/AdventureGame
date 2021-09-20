@@ -12,8 +12,8 @@ public class Game {
     public void start() {
         System.out.println("Welcome to the Adventure Game !");
         System.out.print("Give us your name : ");
-        // String playerName = input.nextLine();
-        player = new Player(/* playerName */"atakan");
+        String playerName = input.nextLine();
+        player = new Player(playerName);
         System.out.println("Brave Warrior " + player.getName() + " Welcome to the Adventure Realm!");
         while (true) {
             Location loc;
@@ -40,5 +40,4 @@ public class Game {
             }
         }
     }
-
 }

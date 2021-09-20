@@ -41,7 +41,6 @@ public abstract class GameChar {
 
     @Override
     public String toString() {
-        return "Character: " + getType() + "\t Damage: " + getDamage() + "\t Health: " + getHealth() + "\t Money :"
-                + getMoney();
+        return getType() + "\t Damage: " + getDamage() + "\t Health: " + getHealth() + "\t Money :" + getMoney();
     }
 }
