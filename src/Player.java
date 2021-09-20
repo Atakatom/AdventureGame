@@ -12,28 +12,6 @@ public class Player {
         selectChar();
     }
 
-    public void selectLoc() {
-        Location loc;
-        System.out.println("\nLocations!");
-        System.out.println("-------------------------------------------------------");
-        System.out.println("id : 1 - Safe House");
-        System.out.println("id : 2 - Tool Store");
-        System.out.println("-------------------------------------------------------");
-        System.out.print("Write the id of the location would you like to go: ");
-        int selectLoc = input.nextInt();
-        switch (selectLoc) {
-            case 1:
-                loc = new SafeHouse(this);
-                break;
-            case 2:
-                loc = new ToolStore(this);
-                break;
-            default:
-                loc = new SafeHouse(this);
-        }
-        loc.onLocation();
-    }
-
     protected void selectChar() {
         if (!warriorIsSummoned) {
             System.out.println("Just so you know the journey ahaed of you is not meant for the shilly-shally");
