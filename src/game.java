@@ -5,10 +5,6 @@ public class Game {
     Player player;
     Location location;
 
-    Game() {
-
-    }
-
     public void start() {
         System.out.println("Welcome to the Adventure Game !");
         System.out.print("Give us your name : ");

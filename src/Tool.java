@@ -1,7 +1,7 @@
 abstract class Tool {
     private String name;
-    private int id;
     private int price;
+    private int id;
 
     public Tool(int id, String name, int price) {
         this.name = name;

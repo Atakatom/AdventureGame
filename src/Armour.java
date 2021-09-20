@@ -21,4 +21,12 @@ public class Armour extends Tool {
         armourList[2] = new Armour(3, "Heavy", 5, 40);
         return armourList;
     }
+
+    public static Armour pickArmourByID(int id) {
+        for (Armour a : Armour.listOptions()) {
+            if (a.getId() == id)
+                return a;
+        }
+        return null;
+    }
 }

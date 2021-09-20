@@ -21,4 +21,13 @@ public class Weapon extends Tool {
         weaponList[2] = new Weapon(3, "Sword", 7, 45);
         return weaponList;
     }
+
+    public static Weapon pickWeaponByID(int id) {
+        for (Weapon w : Weapon.listOptions()) {
+            if (w.getId() == id) {
+                return w;
+            }
+        }
+        return null;
+    }
 }

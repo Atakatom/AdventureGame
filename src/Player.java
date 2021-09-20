@@ -4,57 +4,54 @@ public class Player {
     Inventory inv = new Inventory();
     private String name;
     private GameChar characterType;
+    private Weapon weapon;
+    private Armour armour;
     boolean warriorIsSummoned = false;
     Scanner input = new Scanner(System.in);
 
     public Player(String name) {
         this.name = name;
         selectChar();
+        weapon = new Weapon(0, "barehanded", 0, 0);
+        armour = new Armour(0, "naked", 0, 0);
     }
 
     protected void selectChar() {
-        if (!warriorIsSummoned) {
-            System.out.println("Just so you know the journey ahaed of you is not meant for the shilly-shally");
-            System.out.println("Now your first action to choose is how to define yourself in the battlefield...");
-            GameChar[] charList = { new Samurai(), new Archer(), new Knight() };
-            System.out.println("\n################\tCharacters\t################\n");
-            System.out.println("-------------------------------------------------------\n");
-            while (!warriorIsSummoned) {
-                int a = 1;
-                for (GameChar i : charList) {
-                    System.out.println("id : " + a + " - " + i.toString());
-                    a++;
-                }
-                System.out.println("\n-------------------------------------------------------");
-                System.out.print("Write the ID of the character you want to choose: ");
-                warriorIsSummoned = true;
-                // try {
-                int id = input.nextInt();
-                switch (id) {
-                    case 1:
-                        characterType = new Samurai();
-                        break;
-                    case 2:
-                        characterType = new Archer();
-                        break;
-                    case 3:
-                        characterType = new Knight();
-                        break;
-                    default:
-                        System.out.println("YOU IMPUDENT!! DO YOU TAKE ME AS A FOOL!!!\n"
-                                + "THIS IS NO PLACE FOR SUCH JOKES, BE SERIOUS AND WRITE THE ID OF YOUR CHARACTER:");
-                        warriorIsSummoned = false;
-                }
-                // } catch (Exception e) {
-                // System.out.println("YOU IMPUDENT!! DO YOU TAKE ME AS A FOOL!!!\n"
-                // + "THIS IS NO PLACE FOR SUCH JOKES, BE SERIOUS AND WRITE THE ID OF YOUR
-                // CHARACTER:");
-                // warriorIsSummoned = false;
-                // }
+        System.out.println("Just so you know the journey ahaed of you is not meant for the shilly-shally");
+        System.out.println("Now your first action to choose is how to define yourself in the battlefield...");
+        GameChar[] charList = { new Samurai(), new Archer(), new Knight() };
+        System.out.println("\n################\tCharacters\t################\n");
+        System.out.println("-------------------------------------------------------\n");
+        while (!warriorIsSummoned) {
+            int a = 1;
+            for (GameChar i : charList) {
+                System.out.println("id : " + a + " - " + i.toString());
+                a++;
             }
-        } else {
-            System.out.print("WHAT KIND OF AND IDIOT ARE YOU FOR NOT REALIZING THAT YOU ALREADY EXIST!!!");
+            System.out.println("\n-------------------------------------------------------");
+            System.out.print("Write the ID of the character you want to choose: ");
+            warriorIsSummoned = true;
+            int id = input.nextInt();
+            switch (id) {
+                case 1:
+                    characterType = new Samurai();
+                    break;
+                case 2:
+                    characterType = new Archer();
+                    break;
+                case 3:
+                    characterType = new Knight();
+                    break;
+                default:
+                    System.out.println("YOU IMPUDENT!! DO YOU TAKE ME AS A FOOL!!!\n"
+                            + "THIS IS NO PLACE FOR SUCH JOKES, BE SERIOUS AND WRITE THE ID OF YOUR CHARACTER:");
+                    warriorIsSummoned = false;
+            }
         }
+    }
+
+    public void setWeapon(Weapon weapon) {
+        this.weapon = weapon;
     }
 
     public String getName() {

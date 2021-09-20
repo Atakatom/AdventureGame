@@ -17,6 +17,9 @@ public class ToolStore extends NormalLoc {
             switch (input.nextInt()) {
                 case 1:
                     printWeapon();
+                    Weapon w = buyWeapon();
+                    if(w!=null)
+                        super.getPlayer().set
                     loop = false;
                     break;
                 case 2:
@@ -43,6 +46,19 @@ public class ToolStore extends NormalLoc {
         }
     }
 
+    public Weapon buyWeapon() {
+        System.out.print("(0-for Exit)\nChoose a weapon: ");
+        int selectWeapon = input.nextInt();
+        while (selectWeapon < 0 || selectWeapon > Weapon.listOptions().length) {
+            System.out.print("\nInvalid choice! Enter again : ");
+            selectWeapon = input.nextInt();
+        }
+        if (selectWeapon != 0) {
+            return Weapon.listOptions()[selectWeapon - 1];
+        }
+        return null;
+    }
+
     public void printArmour() {
         System.out.println("\n--------Armours--------\n");
         for (Armour a : Armour.listOptions()) {
@@ -51,7 +67,4 @@ public class ToolStore extends NormalLoc {
         }
     }
 
-    public void buy() {
-
-    }
 }
