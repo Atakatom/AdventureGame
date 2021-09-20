@@ -1,11 +1,11 @@
-public class River extends BattleLoc {
-    public River() {
-        super(new Bear());
-    }
+// public class River extends BattleLoc {
+// public River() {
+// super(new Bear());
+// }
 
-    @Override
-    void location() {
-        // TODO Auto-generated method stub
+// @Override
+// void location() {
+// // TODO Auto-generated method stub
 
-    }
-}
+// }
+// }

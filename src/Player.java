@@ -2,71 +2,94 @@ import java.util.Scanner;
 
 public class Player {
     Inventory inv = new Inventory();
-    int damage, health, money;
-    String name, type;
+    private String name;
+    private GameChar characterType;
     boolean warriorIsSummoned = false;
+    Scanner input = new Scanner(System.in);
 
-    public Player() {
-        // selectChar();
+    public Player(String name) {
+        this.name = name;
+        selectChar();
+    }
+
+    public void selectLoc() {
+        Location loc;
+        System.out.println("\nLocations!");
+        System.out.println("-------------------------------------------------------");
+        System.out.println("id : 1 - Safe House");
+        System.out.println("id : 2 - Tool Store");
+        System.out.println("-------------------------------------------------------");
+        System.out.print("Write the id of the location would you like to go: ");
+        int selectLoc = input.nextInt();
+        switch (selectLoc) {
+            case 1:
+                loc = new SafeHouse(this);
+                break;
+            case 2:
+                loc = new ToolStore(this);
+                break;
+            default:
+                loc = new SafeHouse(this);
+        }
+        loc.onLocation();
     }
 
     protected void selectChar() {
         if (!warriorIsSummoned) {
-            Scanner input = new Scanner(System.in);
             System.out.println("Just so you know the journey ahaed of you is not meant for the shilly-shally");
-            System.out.println("Now your first action to choose is how you define yourself in battlefield...");
+            System.out.println("Now your first action to choose is how to define yourself in the battlefield...");
+            GameChar[] charList = { new Samurai(), new Archer(), new Knight() };
+            System.out.println("-------------------------------------------------------");
             while (!warriorIsSummoned) {
-                System.out.println("Character   ID    DAMAGE    HEALTH    MONEY");
-                System.out.println(" Samurai    1      5         21        15");
-                System.out.println(" Archer     2      7         18        20");
-                System.out.println(" Knight     3      8         24        5");
+                int a = 1;
+                for (GameChar i : charList) {
+                    System.out.println("id : " + a + " " + i.toString());
+                    a++;
+                }
+                System.out.println("-------------------------------------------------------");
                 System.out.print("Write the ID of the character you want to choose: ");
-                int id = input.nextInt();
                 warriorIsSummoned = true;
+                // try {
+                int id = input.nextInt();
                 switch (id) {
                     case 1:
-                        type = "Samurai";
-                        damage = 5;
-                        health = 21;
-                        money = 15;
+                        characterType = new Samurai();
                         break;
                     case 2:
-                        type = "Archer";
-                        damage = 7;
-                        health = 18;
-                        money = 20;
+                        characterType = new Archer();
                         break;
                     case 3:
-                        type = "Knight";
-                        damage = 8;
-                        health = 24;
-                        money = 5;
+                        characterType = new Knight();
                         break;
                     default:
-                        System.out.print("YOU IMPUDENT!! DO YOU TAKE ME AS A FOOL!!!\n"
+                        System.out.println("YOU IMPUDENT!! DO YOU TAKE ME AS A FOOL!!!\n"
                                 + "THIS IS NO PLACE FOR SUCH JOKES, BE SERIOUS AND WRITE THE ID OF YOUR CHARACTER:");
                         warriorIsSummoned = false;
-                        break;
                 }
-                input.close();
+                // } catch (Exception e) {
+                // System.out.println("YOU IMPUDENT!! DO YOU TAKE ME AS A FOOL!!!\n"
+                // + "THIS IS NO PLACE FOR SUCH JOKES, BE SERIOUS AND WRITE THE ID OF YOUR
+                // CHARACTER:");
+                // warriorIsSummoned = false;
+                // }
             }
         } else {
             System.out.print("WHAT KIND OF AND IDIOT ARE YOU FOR NOT REALIZING THAT YOU ALREADY EXIST!!!");
         }
     }
 
-    public String name() {
+    public String getName() {
         return this.name;
     }
 
     public void warriorStatus() {
-        System.out.println("Type:   " + type);
-        System.out.println("Health: " + health);
-        System.out.println("Damage: " + damage + " + " + inv.weaponDamage);
+        System.out.println("Type:   " + characterType.getType());
+        System.out.println("Health: " + characterType.getHealth());
+        System.out.println("Damage: " + characterType.getDamage() + " + " + inv.weaponDamage);
     }
 
     public void inventoryStatus() {
-        System.out.println("Money : " + money);
+        System.out.println("Money : " + characterType.getMoney());
         System.out.println("Food " + (inv.food ? "obtained" : "null"));
         System.out.println("Firewood " + (inv.firewood ? "obtained" : "null"));
         System.out.println("Water " + (inv.water ? "obtained" : "null"));

@@ -1,11 +1,11 @@
-public class Cave extends BattleLoc {
-    public Cave() {
-        super(new Zombie());
-    }
+// public class Cave extends BattleLoc {
+// public Cave() {
+// super(new Zombie());
+// }
 
-    @Override
-    void location() {
-        // TODO Auto-generated method stub
+// @Override
+// void location() {
+// // TODO Auto-generated method stub
 
-    }
-}
+// }
+// }

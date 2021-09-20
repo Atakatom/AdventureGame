@@ -1,11 +1,12 @@
 public class SafeHouse extends NormalLoc {
-    @Override
-    public boolean onLocation() {
-        return true;
+    public SafeHouse(Player player) {
+        super(player, "Safe House");
     }
 
     @Override
-    void location() {
-        // TODO Auto-generated method stub
+    public boolean onLocation() {
+        System.out.println("You are in safe house !");
+        System.out.println("Your health is recovered");
+        return true;
     }
 }

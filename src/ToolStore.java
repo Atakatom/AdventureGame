@@ -1,14 +1,14 @@
 import java.util.Scanner;
 
 public class ToolStore extends NormalLoc {
-    @Override
-    public boolean onLocation() {
-        return true;
+    public ToolStore(Player player) {
+        super(player, "Shop");
     }
 
     @Override
-    void location() {
-        // TODO Auto-generated method stub
+    public boolean onLocation() {
+        System.out.println("Welcome to the Tool Store !");
+        return true;
     }
 
     public void menu() {

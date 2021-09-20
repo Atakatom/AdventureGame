@@ -1,15 +1,15 @@
-abstract class BattleLoc extends Location {
-    Obstacle obstacle;
+// abstract class BattleLoc extends Location {
+// Obstacle obstacle;
 
-    public BattleLoc(Obstacle o) {
+// public BattleLoc(Obstacle o) {
 
-    }
+// }
 
-    public boolean onLocation() {
-        return true;
-    }
+// public boolean onLocation() {
+// return true;
+// }
 
-    public void combat() {
+// public void combat() {
 
-    }
-}
+// }
+// }
