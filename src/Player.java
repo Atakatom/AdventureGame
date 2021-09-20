@@ -17,14 +17,15 @@ public class Player {
             System.out.println("Just so you know the journey ahaed of you is not meant for the shilly-shally");
             System.out.println("Now your first action to choose is how to define yourself in the battlefield...");
             GameChar[] charList = { new Samurai(), new Archer(), new Knight() };
-            System.out.println("-------------------------------------------------------");
+            System.out.println("\n################\tCharacters\t################\n");
+            System.out.println("-------------------------------------------------------\n");
             while (!warriorIsSummoned) {
                 int a = 1;
                 for (GameChar i : charList) {
                     System.out.println("id : " + a + " " + i.toString());
                     a++;
                 }
-                System.out.println("-------------------------------------------------------");
+                System.out.println("\n-------------------------------------------------------");
                 System.out.print("Write the ID of the character you want to choose: ");
                 warriorIsSummoned = true;
                 // try {
