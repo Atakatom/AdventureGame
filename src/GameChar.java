@@ -1,22 +1,36 @@
-public abstract class GameChar {
+public class GameChar {
+    private int id;
     private int damage;
     private int health;
     private int money;
     private String type;
 
-    public GameChar(String type, int damage, int health, int money) {
+    public GameChar(int id, String type, int damage, int health, int money) {
+        this.id = id;
         this.damage = damage;
         this.health = health;
         this.money = money;
         this.type = type;
     }
 
-    public int getMoney() {
-        return money;
+    public static GameChar[] charList() {
+        GameChar[] charList = new GameChar[3];
+        charList[0] = new GameChar(1, "Samurai", 5, 21, 15);
+        charList[1] = new GameChar(2, "Archer", 7, 18, 20);
+        charList[2] = new GameChar(3, "Knight", 8, 24, 5);
+        return charList;
     }
 
-    public void setMoney(int money) {
-        this.money = money;
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getMoney() {
+        return money;
     }
 
     public int getDamage() {
@@ -31,7 +45,7 @@ public abstract class GameChar {
         return health;
     }
 
-    public String getType() {
+    public String getName() {
         return type;
     }
 
@@ -41,6 +55,7 @@ public abstract class GameChar {
 
     @Override
     public String toString() {
-        return getType() + "\t Damage: " + getDamage() + "\t Health: " + getHealth() + "\t Money :" + getMoney();
+        return getId() + "\t" + getName() + "\t Damage: " + getDamage() + "\t Health: " + getHealth() + "\t Money :"
+                + getMoney();
     }
 }

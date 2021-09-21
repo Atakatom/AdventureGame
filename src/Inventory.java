@@ -1,16 +1,16 @@
 public class Inventory {
-    boolean water, food, firewood;
-    String weaponName, armourName;
-    int weaponDamage, armourDefence;
+    boolean water;
+    boolean food;
+    boolean firewood;
+    Weapon weapon;
+    Armour armour;
 
     public Inventory() {
         water = false;
         food = false;
         firewood = false;
-        weaponName = "barehanded";
-        armourName = "naked";
-        weaponDamage = 0;
-        armourDefence = 0;
+        weapon = Weapon.defaultWeapon();
+        armour = Armour.defaultArmour();
     }
 
     public boolean doWeHaveWater() {
@@ -40,23 +40,29 @@ public class Inventory {
         System.out.println("Firewood is added to your inventory...");
     }
 
-    public void newWeapon(String weaponName, int weaponDamage) {
-        this.weaponName = weaponName;
-        this.weaponDamage = weaponDamage;
+    public void setWeapon(Weapon weapon) {
+        this.weapon = weapon;
     }
 
     public void weaponStatus() {
-        System.out.println(
-                "Name of your weapon is: " + weaponName + "\n" + "The damage your weapon can hit is: " + weaponDamage);
+        System.out.println("Name of your weapon is: " + weapon.getName() + "\n" + "The damage your weapon can hit is: "
+                + weapon.getDamage());
     }
 
-    public void newArmour(String armourName, int armourDefence) {
-        this.armourName = armourName;
-        this.armourDefence = armourDefence;
+    public Weapon getWeapon() {
+        return weapon;
+    }
+
+    public void setArmour(Armour armour) {
+        this.armour = armour;
     }
 
     public void armourStatus() {
-        System.out.println("Name of your armour is: " + armourName + "\n" + "The damage your armour can absorb is: "
-                + armourDefence);
+        System.out.println("Name of your armour is: " + armour.getName() + "\n"
+                + "The damage your armour can absorb is: " + armour.getDefence());
+    }
+
+    public Armour getArmour() {
+        return armour;
     }
 }

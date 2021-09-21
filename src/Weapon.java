@@ -6,6 +6,10 @@ public class Weapon extends Tool {
         this.damage = damage;
     }
 
+    public static Weapon defaultWeapon() {
+        return new Weapon(0, "naked", 0, 0);
+    }
+
     public int getDamage() {
         return damage;
     }

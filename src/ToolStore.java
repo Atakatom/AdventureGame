@@ -17,13 +17,21 @@ public class ToolStore extends NormalLoc {
             switch (input.nextInt()) {
                 case 1:
                     printWeapon();
-                    Weapon w = buyWeapon();
-                    if (w != null)
-                        super.getPlayer().setWeapon(w);
+                    Weapon weapon = buyWeapon();
+                    if (weapon != null)
+                        super.getPlayer().getInv().setWeapon(weapon);
                     loop = false;
+                    System.out.println("\nConguratulations!!! You have obtained "
+                            + super.getPlayer().getInv().getWeapon().getName());
                     break;
                 case 2:
                     printArmour();
+                    Armour armour = buyArmour();
+                    if (armour != null) {
+                        super.getPlayer().getInv().setArmour(armour);
+                    }
+                    System.out.println("\nConguratulations!!! You have obtained "
+                            + super.getPlayer().getInv().getArmour().getName());
                     loop = false;
                     break;
                 case 3:
@@ -65,6 +73,19 @@ public class ToolStore extends NormalLoc {
             System.out.println(
                     a.getId() + " - " + a.getName() + "\tDefence: " + a.getDefence() + "\tPrice: " + a.getPrice());
         }
+    }
+
+    public Armour buyArmour() {
+        System.out.println("(0-for Exit)\nChoose an armour: ");
+        int selectArmour = input.nextInt();
+        while (selectArmour < 0 || selectArmour > Armour.listOptions().length) {
+            System.out.println("Invalid choice! Enter again : ");
+            selectArmour = input.nextInt();
+        }
+        if (selectArmour != 0) {
+            return Armour.listOptions()[selectArmour - 1];
+        }
+        return null;
     }
 
 }

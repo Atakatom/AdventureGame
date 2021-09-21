@@ -14,11 +14,15 @@ public class Armour extends Tool {
         this.defence = defence;
     }
 
+    public static Armour defaultArmour() {
+        return new Armour(0, "naked", 0, 0);
+    }
+
     public static Armour[] listOptions() {
         Armour[] armourList = new Armour[3];
-        armourList[0] = new Armour(1, "Light", 1, 15);
-        armourList[1] = new Armour(2, "Medium", 3, 25);
-        armourList[2] = new Armour(3, "Heavy", 5, 40);
+        armourList[0] = new Armour(1, "Light Armour", 1, 15);
+        armourList[1] = new Armour(2, "Medium Armour", 3, 25);
+        armourList[2] = new Armour(3, "Heavy Armour", 5, 40);
         return armourList;
     }
 
