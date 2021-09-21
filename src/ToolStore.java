@@ -18,8 +18,8 @@ public class ToolStore extends NormalLoc {
                 case 1:
                     printWeapon();
                     Weapon w = buyWeapon();
-                    if(w!=null)
-                        super.getPlayer().set
+                    if (w != null)
+                        super.getPlayer().setWeapon(w);
                     loop = false;
                     break;
                 case 2:

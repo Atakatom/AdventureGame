@@ -50,6 +50,10 @@ public class Player {
         }
     }
 
+    public Weapon getWeapon() {
+        return weapon;
+    }
+
     public void setWeapon(Weapon weapon) {
         this.weapon = weapon;
     }

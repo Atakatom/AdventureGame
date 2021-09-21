@@ -15,6 +15,7 @@ public class Game {
             Location loc;
             System.out.println("\n################\tLocations\t################\n");
             System.out.println("-------------------------------------------------------\n");
+            System.out.println("id : 0 - EXIT GAME");
             System.out.println("id : 1 - Safe House --> There are no enemies to harm you in here !");
             System.out.println("id : 2 - Tool Store --> You can buy Weapon or Armour");
             System.out.println("\n-------------------------------------------------------");
@@ -30,10 +31,30 @@ public class Game {
                 default:
                     loc = new SafeHouse(player);
             }
+            if (selectLoc == 0) {
+                System.out.println("GAME OVER !!!");
+                break;
+            }
             if (!loc.onLocation()) {
                 System.out.println("GAME OVER !!!");
                 break;
             }
         }
+    }
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
     }
 }
