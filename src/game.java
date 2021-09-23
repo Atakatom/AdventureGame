@@ -12,31 +12,31 @@ public class Game {
         player = new Player(playerName);
         System.out.println("Brave Warrior " + player.getName() + " Welcome to the Adventure Realm!");
         while (true) {
-            Location loc;
+            player.warriorStatus();
             System.out.println("\n################\tLocations\t################\n");
             System.out.println("-------------------------------------------------------\n");
             System.out.println("id : 0 - EXIT GAME");
             System.out.println("id : 1 - Safe House --> There are no enemies to harm you in here !");
             System.out.println("id : 2 - Tool Store --> You can buy Weapon or Armour");
+            System.out.println("id : ");
             System.out.println("\n-------------------------------------------------------");
             System.out.print("Write the id of the location would you like to go: ");
             int selectLoc = input.nextInt();
             switch (selectLoc) {
                 case 1:
-                    loc = new SafeHouse(player);
+                    location = new SafeHouse(player);
                     break;
                 case 2:
-                    loc = new ToolStore(player);
-                    System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+                    location = new ToolStore(player);
                     break;
                 default:
-                    loc = new SafeHouse(player);
+                    location = new SafeHouse(player);
             }
             if (selectLoc == 0) {
                 System.out.println("GAME OVER !!!");
                 break;
             }
-            if (!loc.onLocation()) {
+            if (!location.onLocation()) {
                 System.out.println("GAME OVER !!!");
                 break;
             }

@@ -58,7 +58,7 @@ public class GameChar {
 
     @Override
     public String toString() {
-        return getId() + "\t" + getName() + "\t Damage: " + getDamage() + "\t Health: " + getHealth() + "\t Money :"
-                + getMoney();
+        return "id : " + getId() + "\t Type : " + getName() + "\t Damage: " + getDamage() + "\t Health: " + getHealth()
+                + "\t Money :" + getMoney();
     }
 }

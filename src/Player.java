@@ -68,9 +68,11 @@ public class Player {
     }
 
     public void warriorStatus() {
+        System.out.println("Your stats are: \n");
         System.out.println("Type:   " + characterType.getName());
         System.out.println("Health: " + characterType.getHealth());
-        System.out.println("Damage: " + characterType.getDamage() + " + " + inv.getWeapon());
+        System.out.println("Damage: " + characterType.getDamage() + " + " + inv.getWeapon().getDamage()
+                + "\t( your weapon: " + inv.getWeapon().getName() + " )");
     }
 
     public void inventoryStatus() {
