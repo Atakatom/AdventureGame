@@ -5,6 +5,7 @@ public class Player {
     private String name;
     private GameChar characterType;
     private int money;
+    private int health;
     Scanner input = new Scanner(System.in);
 
     public Player(String name) {
@@ -28,8 +29,9 @@ public class Player {
             System.out.println("\nInvalid choice !! Your character will be a Knight as default !!!\n");
             id = 3;
         }
-        characterType = GameChar.charList()[id - 1];
-        money = characterType.getMoney();
+        setCharType(GameChar.charList()[id - 1]);
+        setMoney(characterType.getMoney());
+        setHealth(characterType.getHealth());
         System.out.println("\nYour character type is " + characterType.getName() + "\n");
     }
 
@@ -43,6 +45,26 @@ public class Player {
 
     public int getMoney() {
         return money;
+    }
+
+    public void setMoney(int money) {
+        this.money = money;
+    }
+
+    public int getHealth() {
+        return health;
+    }
+
+    public void setHealth(int health) {
+        this.health = health;
+    }
+
+    public GameChar getCharType() {
+        return characterType;
+    }
+
+    public void setCharType(GameChar characterType) {
+        this.characterType = characterType;
     }
 
     public void warriorStatus() {

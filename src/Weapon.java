@@ -7,7 +7,7 @@ public class Weapon extends Tool {
     }
 
     public static Weapon defaultWeapon() {
-        return new Weapon(0, "naked", 0, 0);
+        return new Weapon(0, "barehanded", 0, 0);
     }
 
     public int getDamage() {

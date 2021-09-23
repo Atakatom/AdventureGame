@@ -18,20 +18,23 @@ public class ToolStore extends NormalLoc {
                 case 1:
                     printWeapon();
                     Weapon weapon = buyWeapon();
-                    if (weapon != null)
+                    if (weapon != null) {
                         super.getPlayer().getInv().setWeapon(weapon);
+                        System.out.println("\nConguratulations!!! You have obtained "
+                                + super.getPlayer().getInv().getWeapon().getName());
+                    }
                     loop = false;
-                    System.out.println("\nConguratulations!!! You have obtained "
-                            + super.getPlayer().getInv().getWeapon().getName());
+
                     break;
                 case 2:
                     printArmour();
                     Armour armour = buyArmour();
                     if (armour != null) {
                         super.getPlayer().getInv().setArmour(armour);
+                        System.out.println("\nConguratulations!!! You have obtained "
+                                + super.getPlayer().getInv().getArmour().getName());
+                    } else {
                     }
-                    System.out.println("\nConguratulations!!! You have obtained "
-                            + super.getPlayer().getInv().getArmour().getName());
                     loop = false;
                     break;
                 case 3:
@@ -49,20 +52,27 @@ public class ToolStore extends NormalLoc {
     public void printWeapon() {
         System.out.println("\n--------Weapons--------\n");
         for (Weapon w : Weapon.listOptions()) {
-            System.out.println(
-                    w.getId() + " - " + w.getName() + "\tDamage: " + w.getDamage() + "\tPrice: " + w.getPrice());
+            System.out.println("id : " + w.getId() + " - " + w.getName() + "\tDamage: " + w.getDamage() + "\tPrice: "
+                    + w.getPrice());
         }
+        System.out.println("Your money : " + super.getPlayer().getMoney());
     }
 
     public Weapon buyWeapon() {
         System.out.print("(0-for Exit)\nChoose a weapon: ");
-        int selectWeapon = input.nextInt();
-        while (selectWeapon < 0 || selectWeapon > Weapon.listOptions().length) {
+        int weaponID = input.nextInt();
+        while (weaponID < 0 || weaponID > Weapon.listOptions().length) {
             System.out.print("\nInvalid choice! Enter again : ");
-            selectWeapon = input.nextInt();
+            weaponID = input.nextInt();
         }
-        if (selectWeapon != 0) {
-            return Weapon.listOptions()[selectWeapon - 1];
+        if (weaponID != 0) {
+            int playersMoney = super.getPlayer().getMoney();
+            Weapon selectedWeapon = Weapon.listOptions()[weaponID - 1];
+            if (playersMoney < selectedWeapon.getPrice()) {
+                printPoorMan(selectedWeapon, playersMoney);
+                return null;
+            }
+            return selectedWeapon;
         }
         return null;
     }
@@ -70,22 +80,35 @@ public class ToolStore extends NormalLoc {
     public void printArmour() {
         System.out.println("\n--------Armours--------\n");
         for (Armour a : Armour.listOptions()) {
-            System.out.println(
-                    a.getId() + " - " + a.getName() + "\tDefence: " + a.getDefence() + "\tPrice: " + a.getPrice());
+            System.out.println("id : " + a.getId() + " - " + a.getName() + "\tDefence: " + a.getDefence() + "\tPrice: "
+                    + a.getPrice());
         }
+        System.out.println("Your money : " + super.getPlayer().getMoney());
     }
 
     public Armour buyArmour() {
-        System.out.println("(0-for Exit)\nChoose an armour: ");
-        int selectArmour = input.nextInt();
-        while (selectArmour < 0 || selectArmour > Armour.listOptions().length) {
+        System.out.print("(0-for Exit)\nChoose an armour: ");
+        int armourID = input.nextInt();
+        while (armourID < 0 || armourID > Armour.listOptions().length) {
             System.out.println("Invalid choice! Enter again : ");
-            selectArmour = input.nextInt();
+            armourID = input.nextInt();
         }
-        if (selectArmour != 0) {
-            return Armour.listOptions()[selectArmour - 1];
+        if (armourID != 0) {
+            int playersMoney = super.getPlayer().getMoney();
+            Armour selectedArmour = Armour.listOptions()[armourID - 1];
+            if (playersMoney < selectedArmour.getPrice()) {
+                printPoorMan(selectedArmour, playersMoney);
+                return null;
+            }
+            return selectedArmour;
         }
         return null;
+    }
+
+    public void printPoorMan(Tool tool, int playersMoney) {
+        System.out.println("\nYou don't have enough money for that !\nYour money: " + playersMoney + "\tPrice of "
+                + tool.getName() + " is :" + tool.getPrice() + "\n");
+        System.out.println("DON'T COME HERE UNLESS YOU HAVE MONEY !!!");
     }
 
 }
