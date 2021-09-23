@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class GameChar {
     private int id;
     private int damage;
@@ -13,11 +15,12 @@ public class GameChar {
         this.type = type;
     }
 
-    public static GameChar[] charList() {
-        GameChar[] charList = new GameChar[3];
-        charList[0] = new GameChar(1, "Samurai", 5, 21, 15);
-        charList[1] = new GameChar(2, "Archer", 7, 18, 20);
-        charList[2] = new GameChar(3, "Knight", 8, 24, 5);
+    public static ArrayList<GameChar> charList() {
+        ArrayList<GameChar> charList = new ArrayList<>();
+        charList.add(new GameChar(1, "Samurai", 5, 21, 15));
+        charList.add(new GameChar(2, "Archer", 7, 18, 20));
+        charList.add(new GameChar(3, "Knight", 8, 24, 5));
+        charList.add(new GameChar(4, "admin", 99, 99, 9999));
         return charList;
     }
 

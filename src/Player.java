@@ -25,11 +25,11 @@ public class Player {
         System.out.println("\n-------------------------------------------------------\n");
         System.out.print("Write the ID of the character you want to choose: ");
         int id = input.nextInt();
-        if (id < 1 || id > GameChar.charList().length) {
+        if (id < 1 || id > GameChar.charList().size()) {
             System.out.println("\nInvalid choice !! Your character will be a Knight as default !!!\n");
             id = 3;
         }
-        setCharType(GameChar.charList()[id - 1]);
+        setCharType(GameChar.charList().get(id - 1));
         setMoney(characterType.getMoney());
         setHealth(characterType.getHealth());
         System.out.println("\nYour character type is " + characterType.getName() + "\n");

@@ -27,6 +27,7 @@ public class Game {
                     break;
                 case 2:
                     loc = new ToolStore(player);
+                    System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
                     break;
                 default:
                     loc = new SafeHouse(player);

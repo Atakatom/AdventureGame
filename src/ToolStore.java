@@ -19,9 +19,9 @@ public class ToolStore extends NormalLoc {
                     printWeapon();
                     Weapon weapon = buyWeapon();
                     if (weapon != null) {
+                        super.getPlayer().setMoney(super.getPlayer().getMoney() - weapon.getPrice());
                         super.getPlayer().getInv().setWeapon(weapon);
-                        System.out.println("\nConguratulations!!! You have obtained "
-                                + super.getPlayer().getInv().getWeapon().getName());
+                        System.out.println("\nConguratulations!!! You have obtained " + weapon.getName());
                     }
                     loop = false;
 
@@ -30,10 +30,9 @@ public class ToolStore extends NormalLoc {
                     printArmour();
                     Armour armour = buyArmour();
                     if (armour != null) {
+                        super.getPlayer().setMoney(super.getPlayer().getMoney() - armour.getPrice());
                         super.getPlayer().getInv().setArmour(armour);
-                        System.out.println("\nConguratulations!!! You have obtained "
-                                + super.getPlayer().getInv().getArmour().getName());
-                    } else {
+                        System.out.println("\nConguratulations!!! You have obtained " + armour.getName());
                     }
                     loop = false;
                     break;
@@ -50,10 +49,10 @@ public class ToolStore extends NormalLoc {
     }
 
     public void printWeapon() {
+        System.out.println("Current weapon you are using is " + super.getPlayer().getInv().getWeapon().toString());
         System.out.println("\n--------Weapons--------\n");
         for (Weapon w : Weapon.listOptions()) {
-            System.out.println("id : " + w.getId() + " - " + w.getName() + "\tDamage: " + w.getDamage() + "\tPrice: "
-                    + w.getPrice());
+            System.out.println(w.toString());
         }
         System.out.println("Your money : " + super.getPlayer().getMoney());
     }
@@ -78,10 +77,10 @@ public class ToolStore extends NormalLoc {
     }
 
     public void printArmour() {
+        System.out.println("Current armour you are wearing is " + super.getPlayer().getInv().getArmour().toString());
         System.out.println("\n--------Armours--------\n");
-        for (Armour a : Armour.listOptions()) {
-            System.out.println("id : " + a.getId() + " - " + a.getName() + "\tDefence: " + a.getDefence() + "\tPrice: "
-                    + a.getPrice());
+        for (Armour armour : Armour.listOptions()) {
+            System.out.println(armour.toString());
         }
         System.out.println("Your money : " + super.getPlayer().getMoney());
     }

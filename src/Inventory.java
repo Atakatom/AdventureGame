@@ -44,13 +44,13 @@ public class Inventory {
         this.weapon = weapon;
     }
 
+    public Weapon getWeapon() {
+        return weapon;
+    }
+
     public void weaponStatus() {
         System.out.println("Name of your weapon is: " + weapon.getName() + "\n" + "The damage your weapon can hit is: "
                 + weapon.getDamage());
-    }
-
-    public Weapon getWeapon() {
-        return weapon;
     }
 
     public void setArmour(Armour armour) {

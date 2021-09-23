@@ -26,12 +26,8 @@ public class Weapon extends Tool {
         return weaponList;
     }
 
-    public static Weapon pickWeaponByID(int id) {
-        for (Weapon w : Weapon.listOptions()) {
-            if (w.getId() == id) {
-                return w;
-            }
-        }
-        return null;
+    @Override
+    public String toString() {
+        return "id : " + getId() + " - " + getName() + "\tDamage: " + getDamage() + "\tPrice: " + getPrice();
     }
 }

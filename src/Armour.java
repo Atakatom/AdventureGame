@@ -26,11 +26,8 @@ public class Armour extends Tool {
         return armourList;
     }
 
-    public static Armour pickArmourByID(int id) {
-        for (Armour a : Armour.listOptions()) {
-            if (a.getId() == id)
-                return a;
-        }
-        return null;
+    @Override
+    public String toString() {
+        return "id : " + getId() + " - " + getName() + "\tDefence: " + getDefence() + "\tPrice: " + getPrice();
     }
 }
