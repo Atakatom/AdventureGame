@@ -10,9 +10,7 @@ public class Game {
         System.out.print("Give us your name : ");
         String playerName = input.nextLine();
         player = new Player(playerName);
-        System.out.println("Brave Warrior " + player.getName() + " Welcome to the Adventure Realm!");
         while (true) {
-            player.warriorStatus();
             System.out.println("\n################\tLocations\t################\n");
             System.out.println("-------------------------------------------------------\n");
             System.out.println("id : 0 - EXIT GAME");
@@ -40,6 +38,7 @@ public class Game {
                 System.out.println("GAME OVER !!!");
                 break;
             }
+            player.warriorStatus();
         }
     }
 

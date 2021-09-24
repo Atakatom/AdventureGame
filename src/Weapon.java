@@ -7,7 +7,7 @@ public class Weapon extends Tool {
     }
 
     public static Weapon defaultWeapon() {
-        return new Weapon(0, "barehanded", 0, 0);
+        return new Weapon(0, "Fists", 0, 0);
     }
 
     public int getDamage() {
@@ -28,6 +28,6 @@ public class Weapon extends Tool {
 
     @Override
     public String toString() {
-        return "id : " + getId() + " - " + getName() + "\tDamage: " + getDamage() + "\tPrice: " + getPrice();
+        return "ID : " + getId() + " - " + getName() + "\tDamage: " + getDamage() + "\tPrice: " + getPrice();
     }
 }

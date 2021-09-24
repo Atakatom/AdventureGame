@@ -9,9 +9,9 @@ public class ToolStore extends NormalLoc {
         boolean loop = true;
         while (loop) {
             System.out.println("-------------------------------------------------------\n");
-            System.out.println("id : 1 - Weapon --> is an addition to your base damage !");
-            System.out.println("id : 2 - Armour --> partionally cancel the damage of your opponent in each turn !");
-            System.out.println("id : 3 - EXIT !");
+            System.out.println("1 - Weapons");
+            System.out.println("2 - Armours");
+            System.out.println("3 - to Exit");
             System.out.println("\n-------------------------------------------------------");
             System.out.print("Write the id of the type of item you would like to choose: ");
             switch (input.nextInt()) {
@@ -21,7 +21,7 @@ public class ToolStore extends NormalLoc {
                     if (weapon != null) {
                         super.getPlayer().setMoney(super.getPlayer().getMoney() - weapon.getPrice());
                         super.getPlayer().getInv().setWeapon(weapon);
-                        System.out.println("\nConguratulations!!! You have obtained " + weapon.getName());
+                        System.out.println("\nConguratulations!!! You have obtained " + weapon.getName() + "\n");
                     }
                     loop = false;
 
@@ -32,12 +32,12 @@ public class ToolStore extends NormalLoc {
                     if (armour != null) {
                         super.getPlayer().setMoney(super.getPlayer().getMoney() - armour.getPrice());
                         super.getPlayer().getInv().setArmour(armour);
-                        System.out.println("\nConguratulations!!! You have obtained " + armour.getName());
+                        System.out.println("\nConguratulations!!! You have obtained " + armour.getName() + "\n");
                     }
                     loop = false;
                     break;
                 case 3:
-                    System.out.println("Hope to see you soon !");
+                    System.out.println("\n");
                     loop = false;
                     break;
                 default:
@@ -49,7 +49,7 @@ public class ToolStore extends NormalLoc {
     }
 
     public void printWeapon() {
-        System.out.println("Current weapon you are using is " + super.getPlayer().getInv().getWeapon().toString());
+        System.out.println("Current weapon you are using is " + super.getPlayer().getInv().getWeapon().getName());
         System.out.println("\n--------Weapons--------\n");
         for (Weapon w : Weapon.listOptions()) {
             System.out.println(w.toString());
@@ -77,7 +77,7 @@ public class ToolStore extends NormalLoc {
     }
 
     public void printArmour() {
-        System.out.println("Current armour you are wearing is " + super.getPlayer().getInv().getArmour().toString());
+        System.out.println("Current armour you are wearing is " + super.getPlayer().getInv().getArmour().getName());
         System.out.println("\n--------Armours--------\n");
         for (Armour armour : Armour.listOptions()) {
             System.out.println(armour.toString());

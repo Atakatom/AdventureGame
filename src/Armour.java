@@ -15,7 +15,7 @@ public class Armour extends Tool {
     }
 
     public static Armour defaultArmour() {
-        return new Armour(0, "naked", 0, 0);
+        return new Armour(0, "Naked", 0, 0);
     }
 
     public static Armour[] listOptions() {
@@ -28,6 +28,6 @@ public class Armour extends Tool {
 
     @Override
     public String toString() {
-        return "id : " + getId() + " - " + getName() + "\tDefence: " + getDefence() + "\tPrice: " + getPrice();
+        return "ID : " + getId() + " - " + getName() + "\tDefence: " + getDefence() + "\tPrice: " + getPrice();
     }
 }

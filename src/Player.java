@@ -32,7 +32,8 @@ public class Player {
         setCharType(GameChar.charList().get(id - 1));
         setMoney(characterType.getMoney());
         setHealth(characterType.getHealth());
-        System.out.println("\nYour character type is " + characterType.getName() + "\n");
+        System.out.println("\nBrave Warrior " + getName() + " Welcome to the Adventure Realm!\n");
+        warriorStatus();
     }
 
     public Inventory getInv() {
@@ -68,15 +69,19 @@ public class Player {
     }
 
     public void warriorStatus() {
-        System.out.println("Your stats are: \n");
-        System.out.println("Type:   " + characterType.getName());
-        System.out.println("Health: " + characterType.getHealth());
-        System.out.println("Damage: " + characterType.getDamage() + " + " + inv.getWeapon().getDamage()
-                + "\t( your weapon: " + inv.getWeapon().getName() + " )");
+        System.out.println("Your status are: ");
+        System.out.println("Name : " + getName() + ", Type : " + characterType.getName() + ", Blocking : "
+                + inv.getArmour().getDefence() + " (" + inv.getArmour().getName() + ")" + ", Damage : "
+                + characterType.getDamage() + " + " + inv.getWeapon().getDamage() + " (" + inv.getWeapon().getName()
+                + ")" + ", Health : " + characterType.getHealth() + ", Money : " + getMoney());
     }
 
     public void inventoryStatus() {
-        System.out.println("Money : " + getMoney());
+        System.out.println("Your status are: ");
+        System.out.println("Type:   " + characterType.getName() + ", Weapon : " + inv.getWeapon().getName()
+                + ", Armour : " + inv.getArmour().getName() + ", Blocking : " + inv.getArmour().getDefence()
+                + ", Damage : " + characterType.getDamage() + " + " + inv.getWeapon().getDamage() + ", Health : "
+                + characterType.getHealth() + ", Money : " + getMoney());
         System.out.println("Food " + (inv.food ? "obtained" : "null"));
         System.out.println("Firewood " + (inv.firewood ? "obtained" : "null"));
         System.out.println("Water " + (inv.water ? "obtained" : "null"));
