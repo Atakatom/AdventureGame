@@ -9,23 +9,33 @@ public class Player {
     private int health;
     Scanner input = new Scanner(System.in);
 
-    public Player(String name) {
+    public Player(String name) throws Exception {
         inv = new Inventory();
         this.name = name;
         selectChar();
     }
 
-    protected void selectChar() {
-        System.out.println("Just so you know the journey ahaed of you is not meant for the shilly-shally");
-        System.out.println("Now your first action to choose is how to define yourself in the battlefield...");
-        System.out.println("\n################\tCharacters\t################\n");
-        System.out.println("-------------------------------------------------------\n");
+    protected void selectChar() throws Exception {
+        StringBuilder str = new StringBuilder();
+        str.append("Just so you know the journey ahaed of you is not meant for the shilly-shally");
+        str.append("\nNow your first action to choose is how to define yourself in the battlefield...\n");
+        for (int i = 0; i < str.length(); i++) {
+            System.out.print(str.charAt(i));
+            Thread.sleep(50);
+        }
+        str = new StringBuilder();
+        str.append("\n################\tCharacters\t################\n\n");
+        str.append("-------------------------------------------------------\n\n");
         for (GameChar i : GameChar.charList()) {
             if (!i.getName().toLowerCase().equals("admin"))
-                System.out.println(i.toString());
+                str.append(i.toString() + "\n");
         }
-        System.out.println("\n-------------------------------------------------------\n");
-        System.out.print("Write the ID of the character you want to choose: ");
+        str.append("\n-------------------------------------------------------\n\n");
+        str.append("Write the ID of the character you want to choose: ");
+        for (char k : str.toString().toCharArray()) {
+            System.out.print(k);
+            Thread.sleep(40);
+        }
         int id = input.nextInt();
         if (id < 0 || id > GameChar.charList().size() - 1) {
             System.out.println("\nInvalid choice !! Your character will be a chosen randomly!!!\n");

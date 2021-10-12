@@ -5,9 +5,14 @@ public class Game {
     Player player;
     Location location;
 
-    public void start() {
-        System.out.println("Welcome to the Adventure Game !");
-        System.out.print("Give us your name : ");
+    public void start() throws Exception {
+        StringBuilder str = new StringBuilder();
+        str.append("Welcome to the Adventure Game !\n");
+        str.append("Give us your name : ");
+        for (int i = 0; i < str.length(); i++) {
+            System.err.print(str.charAt(i));
+            Thread.sleep(50);
+        }
         String playerName = input.nextLine();
         player = new Player(playerName);
         while (true) {
