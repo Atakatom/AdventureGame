@@ -7,9 +7,9 @@ public class Game {
 
     public void start() {
         System.out.println("Welcome to the Adventure Game !");
-        System.out.print("Give us your name : ");
-        String playerName = input.nextLine();
-        player = new Player(playerName);
+        // System.out.print("Give us your name : ");
+        // String playerName = input.nextLine();
+        player = new Player("atakan");
         while (true) {
             System.out.println("\n################\tLocations\t################\n");
             System.out.println("-------------------------------------------------------\n");
@@ -31,6 +31,7 @@ public class Game {
                     break;
                 case 3:
                     location = new Cave(player);
+
             }
             boolean exit = location.onLocation();
             if (!exit || selectLoc == 0) {

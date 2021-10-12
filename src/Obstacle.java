@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Obstacle {
     private int id;
     private String name;
@@ -41,5 +43,13 @@ public class Obstacle {
 
     public void setHealth(int health) {
         this.health = health;
+    }
+
+    public static ArrayList<Obstacle> getMonsters() {
+        ArrayList<Obstacle> monsters = new ArrayList<>();
+        monsters.add(new Obstacle(1, "Zombie", 3, 10));
+        monsters.add(new Obstacle(2, "Vampire", 4, 14));
+        monsters.add(new Obstacle(3, "Bear", 7, 20));
+        return monsters;
     }
 }

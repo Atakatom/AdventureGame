@@ -15,21 +15,24 @@ public class Player {
     }
 
     protected void selectChar() {
-        System.out.println("Just so you know the journey ahaed of you is not meant for the shilly-shally");
-        System.out.println("Now your first action to choose is how to define yourself in the battlefield...");
-        System.out.println("\n################\tCharacters\t################\n");
-        System.out.println("-------------------------------------------------------\n");
-        for (GameChar i : GameChar.charList()) {
-            System.out.println(i.toString());
-        }
-        System.out.println("\n-------------------------------------------------------\n");
-        System.out.print("Write the ID of the character you want to choose: ");
-        int id = input.nextInt();
-        if (id < 1 || id > GameChar.charList().size()) {
-            System.out.println("\nInvalid choice !! Your character will be a Knight as default !!!\n");
-            id = 3;
-        }
-        setCharType(GameChar.charList().get(id - 1));
+        // System.out.println("Just so you know the journey ahaed of you is not meant
+        // for the shilly-shally");
+        // System.out.println("Now your first action to choose is how to define yourself
+        // in the battlefield...");
+        // System.out.println("\n################\tCharacters\t################\n");
+        // System.out.println("-------------------------------------------------------\n");
+        // for (GameChar i : GameChar.charList()) {
+        // System.out.println(i.toString());
+        // }
+        // System.out.println("\n-------------------------------------------------------\n");
+        // System.out.print("Write the ID of the character you want to choose: ");
+        // int id = input.nextInt();
+        // if (id < 1 || id > GameChar.charList().size()) {
+        // System.out.println("\nInvalid choice !! Your character will be a Knight as
+        // default !!!\n");
+        // id = 3;
+        // }
+        setCharType(GameChar.charList().get(/* id - 1 */2));
         setMoney(characterType.getMoney());
         setHealth(characterType.getHealth());
         System.out.println("\nBrave Warrior " + getName() + " Welcome to the Adventure Realm!\n");
@@ -66,6 +69,10 @@ public class Player {
 
     public void setCharType(GameChar characterType) {
         this.characterType = characterType;
+    }
+
+    public int getDamage() {
+        return characterType.getDamage() + inv.getWeapon().getDamage();
     }
 
     public void warriorStatus() {

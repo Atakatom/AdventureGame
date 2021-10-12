@@ -1,5 +1,7 @@
 import java.util.Random;
 
+import javax.print.attribute.SetOfIntegerSyntax;
+
 public class BattleLoc extends Location {
     private Obstacle obstacle;
     private int numOfObs;
@@ -26,11 +28,45 @@ public class BattleLoc extends Location {
         while (numOfObs > 0) {
             System.out.println("\n----------------------------------------------\n");
             System.out.println("WATCH OUT !!! There are " + numOfObs + " of them!");
+            System.out.print("\nFight! (Y) or Run! (N) : ");
+            String choice = input.nextLine().trim().toLowerCase();
+            if (choice.equals("y")) {
+                System.out.println(
+                        "\n----------------------------------------------------------------------------------------------------------\n");
+                combat(numOfObs);
+
+            } else {
+                System.out.println("YOU COWARD !!");
+                break;
+            }
         }
         return true;
     }
 
-    public void combat() {
-
+    public boolean combat(int numOfObs) {
+        System.out.printf("Your Health : %-5sDamage : %-5sBlocking : %-12sVS%12s", this.getPlayer().getHealth(),
+                this.getPlayer().getDamage(), this.getPlayer().getInv().getArmour().getDefence(), "");
+        System.out.printf("%s%-5dHealth : %-5dDamage : %-5d%n", obstacle.getName(), 1, obstacle.getHealth(),
+                obstacle.getDamage());
+        for (int k = 1; k < numOfObs; k++) {
+            System.out.printf("%70s%s%-5dHealth : %-5dDamage : %-5d%n", "", obstacle.getName(), k + 1,
+                    obstacle.getHealth(), obstacle.getDamage());
+        }
+        System.out.println("");
+        Obstacle[] enemies = new Obstacle[numOfObs];
+        for (int i = 0; i < enemies.length; i++) {
+            enemies[i] = Obstacle.getMonsters().get(this.obstacle.getID() - 1);
+            while (enemies[i].getHealth() > 0) {
+                System.out.printf("Your hit caused%2s damage%-10s", this.getPlayer().getDamage(), "");
+                enemies[i].setHealth(enemies[i].getHealth() - this.getPlayer().getDamage());
+                if (enemies[i].getHealth() < 0)
+                    System.out.printf("%s%d is killed!!%-10sRemaining enemies are : %s%n", this.obstacle.getName(),
+                            i + 1, "", enemies.length - i - 1);
+                else
+                    System.out.printf("Health of %s%d is : %s%n", this.obstacle.getName(), i + 1,
+                            enemies[i].getHealth());
+            }
+        }
+        return false;
     }
 }
