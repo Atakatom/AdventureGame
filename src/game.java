@@ -35,7 +35,7 @@ public class Game {
             }
             boolean exit = location.onLocation();
             if (!exit || selectLoc == 0) {
-                System.out.println("GAME OVER !!!");
+                System.out.printf("%n%n%60s%n%n", "GAME OVER !!!");
                 break;
             }
             player.warriorStatus();

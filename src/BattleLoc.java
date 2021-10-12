@@ -1,7 +1,5 @@
 import java.util.Random;
 
-import javax.print.attribute.SetOfIntegerSyntax;
-
 public class BattleLoc extends Location {
     private Obstacle obstacle;
     private int numOfObs;
@@ -24,7 +22,7 @@ public class BattleLoc extends Location {
         System.out.println("Brave Warrior " + super.getPlayer().getName() + " you are in : " + getName() + " !");
         System.out.println("Be careful !! In here you can come up to " + obstacle.getName() + " anytime!");
         Random rand = new Random();
-        numOfObs = rand.nextInt(2) + 1;
+        numOfObs = rand.nextInt(3) + 1;
         while (numOfObs > 0) {
             System.out.println("\n----------------------------------------------\n");
             System.out.println("WATCH OUT !!! There are " + numOfObs + " of them!");
@@ -33,7 +31,7 @@ public class BattleLoc extends Location {
             if (choice.equals("y")) {
                 System.out.println(
                         "\n----------------------------------------------------------------------------------------------------------\n");
-                combat(numOfObs);
+                return combat(numOfObs);
 
             } else {
                 System.out.println("YOU COWARD !!");
@@ -57,16 +55,30 @@ public class BattleLoc extends Location {
         for (int i = 0; i < enemies.length; i++) {
             enemies[i] = Obstacle.getMonsters().get(this.obstacle.getID() - 1);
             while (enemies[i].getHealth() > 0) {
-                System.out.printf("Your hit caused%2s damage%-10s", this.getPlayer().getDamage(), "");
+                System.out.printf("Your hit caused%2s damage%-13s", this.getPlayer().getDamage(), "");
                 enemies[i].setHealth(enemies[i].getHealth() - this.getPlayer().getDamage());
-                if (enemies[i].getHealth() < 0)
-                    System.out.printf("%s%d is killed!!%-10sRemaining enemies are : %s%n", this.obstacle.getName(),
+                if (enemies[i].getHealth() < 0) {
+                    System.out.printf("%s%d is killed!!%-14sRemaining enemies are : %s%n", this.obstacle.getName(),
                             i + 1, "", enemies.length - i - 1);
-                else
+                    if (enemies.length - i - 1 == 0) {
+                        System.out.println("\n************************************\tTHE " + this.getName().toUpperCase()
+                                + " IS CLEARED\t************************************\n");
+                        System.out.println(
+                                "\n----------------------------------------------------------------------------------------------------------\n");
+                        return true;
+                    }
+                } else
                     System.out.printf("Health of %s%d is : %s%n", this.obstacle.getName(), i + 1,
                             enemies[i].getHealth());
+                System.out.printf("Enemies hit caused%2s damage%-10s", enemies[i].getDamage(), "");
+                this.getPlayer().setHealth(this.getPlayer().getHealth() - enemies[i].getDamage());
+                if (this.getPlayer().getHealth() < 0) {
+                    System.out.println("You are killed!!");
+                    return false;
+                } else
+                    System.out.printf("Your remaining health is: %s%n", this.getPlayer().getHealth());
             }
         }
-        return false;
+        return true;
     }
 }

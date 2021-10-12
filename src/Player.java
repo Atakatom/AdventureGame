@@ -80,7 +80,7 @@ public class Player {
         System.out.println("Name : " + getName() + ", Type : " + characterType.getName() + ", Blocking : "
                 + inv.getArmour().getDefence() + " (" + inv.getArmour().getName() + ")" + ", Damage : "
                 + characterType.getDamage() + " + " + inv.getWeapon().getDamage() + " (" + inv.getWeapon().getName()
-                + ")" + ", Health : " + characterType.getHealth() + ", Money : " + getMoney());
+                + ")" + ", Health : " + getHealth() + ", Money : " + getMoney());
     }
 
     public void inventoryStatus() {

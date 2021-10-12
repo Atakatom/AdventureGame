@@ -1,5 +1,6 @@
 
 public class Cave extends BattleLoc {
+
     static int monsterID = 0;
     static {
         for (int i = 0; i < Obstacle.getMonsters().size(); i++) {
