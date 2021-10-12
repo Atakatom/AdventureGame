@@ -20,16 +20,17 @@ public class Player {
         System.out.println("\n################\tCharacters\t################\n");
         System.out.println("-------------------------------------------------------\n");
         for (GameChar i : GameChar.charList()) {
-            System.out.println(i.toString());
+            if (!i.getName().toLowerCase().equals("admin"))
+                System.out.println(i.toString());
         }
         System.out.println("\n-------------------------------------------------------\n");
         System.out.print("Write the ID of the character you want to choose: ");
         int id = input.nextInt();
-        if (id < 1 || id > GameChar.charList().size()) {
+        if (id < 0 || id > GameChar.charList().size() - 1) {
             System.out.println("\nInvalid choice !! Your character will be a Knight as default !!!\n");
             id = 3;
         }
-        setCharType(GameChar.charList().get(id - 1));
+        setCharType(GameChar.charList().get(id));
         setMoney(characterType.getMoney());
         setHealth(characterType.getHealth());
         System.out.println("\nBrave Warrior " + getName() + " Welcome to the Adventure Realm!\n");

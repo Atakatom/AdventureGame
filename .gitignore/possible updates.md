@@ -4,4 +4,4 @@
 
 ## admin karakterinin id sini -1 yapip gorunmeden secilmesini saglayabilirim
 
-## textler yavas yavas yazilmali
+## textler yavas yavas yazilmali DONE

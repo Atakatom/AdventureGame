@@ -17,10 +17,10 @@ public class GameChar {
 
     public static ArrayList<GameChar> charList() {
         ArrayList<GameChar> charList = new ArrayList<>();
+        charList.add(new GameChar(0, "admin", 99, 99, 9999));
         charList.add(new GameChar(1, "Samurai", 5, 21, 15));
         charList.add(new GameChar(2, "Archer", 7, 18, 20));
         charList.add(new GameChar(3, "Knight", 8, 24, 5));
-        charList.add(new GameChar(4, "admin", 99, 99, 9999));
         return charList;
     }
 
