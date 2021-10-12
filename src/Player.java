@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.Random;
 
 public class Player {
     Inventory inv;
@@ -27,13 +28,14 @@ public class Player {
         System.out.print("Write the ID of the character you want to choose: ");
         int id = input.nextInt();
         if (id < 0 || id > GameChar.charList().size() - 1) {
-            System.out.println("\nInvalid choice !! Your character will be a Knight as default !!!\n");
-            id = 3;
+            System.out.println("\nInvalid choice !! Your character will be a chosen randomly!!!\n");
+            Random rand = new Random();
+            id = rand.nextInt(3) + 1;
         }
         setCharType(GameChar.charList().get(id));
         setMoney(characterType.getMoney());
         setHealth(characterType.getHealth());
-        System.out.println("\nBrave Warrior " + getName() + " Welcome to the Adventure Realm!\n");
+        System.out.println("Brave Warrior " + getName() + " Welcome to the Adventure Realm!\n");
         warriorStatus();
     }
 
