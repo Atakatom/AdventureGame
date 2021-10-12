@@ -1,13 +1,23 @@
 import java.util.Random;
 
 public class BattleLoc extends Location {
+    private String reward;
     private Obstacle obstacle;
     private int numOfObs;
 
-    public BattleLoc(Player player, String name, Obstacle obstacle) {
+    public BattleLoc(Player player, String name, Obstacle obstacle, String reward) {
         super(player, name);
         this.obstacle = obstacle;
+        this.reward = reward;
 
+    }
+
+    public String getReward() {
+        return reward;
+    }
+
+    public void setReward(String reward) {
+        this.reward = reward;
     }
 
     public Obstacle getObstacle() {
@@ -65,6 +75,7 @@ public class BattleLoc extends Location {
                                 + " IS CLEARED\t************************************\n");
                         System.out.println(
                                 "\n----------------------------------------------------------------------------------------------------------\n");
+                        this.getPlayer().getInv().gainReward(this.getReward());
                         return true;
                     }
                 } else

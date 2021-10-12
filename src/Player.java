@@ -76,7 +76,7 @@ public class Player {
     }
 
     public void warriorStatus() {
-        System.out.println("Your status are: ");
+        System.out.println("\nYour status are: ");
         System.out.println("Name : " + getName() + ", Type : " + characterType.getName() + ", Blocking : "
                 + inv.getArmour().getDefence() + " (" + inv.getArmour().getName() + ")" + ", Damage : "
                 + characterType.getDamage() + " + " + inv.getWeapon().getDamage() + " (" + inv.getWeapon().getName()
@@ -84,13 +84,11 @@ public class Player {
     }
 
     public void inventoryStatus() {
-        System.out.println("Your status are: ");
+        System.out.println("\nYour status are: ");
         System.out.println("Type:   " + characterType.getName() + ", Weapon : " + inv.getWeapon().getName()
                 + ", Armour : " + inv.getArmour().getName() + ", Blocking : " + inv.getArmour().getDefence()
                 + ", Damage : " + characterType.getDamage() + " + " + inv.getWeapon().getDamage() + ", Health : "
                 + characterType.getHealth() + ", Money : " + getMoney());
-        System.out.println("Food " + (inv.food ? "obtained" : "null"));
-        System.out.println("Firewood " + (inv.firewood ? "obtained" : "null"));
-        System.out.println("Water " + (inv.water ? "obtained" : "null"));
+        inv.getRewards();
     }
 }

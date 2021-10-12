@@ -1,5 +1,5 @@
 public class River extends BattleLoc {
-    static int monsterID = 0;
+    private static int monsterID = 0;
     static {
         for (int i = 0; i < Obstacle.getMonsters().size(); i++) {
             if (Obstacle.getMonsters().get(i).getName().toLowerCase().equals("bear"))
@@ -8,6 +8,6 @@ public class River extends BattleLoc {
     }
 
     public River(Player player) {
-        super(player, "River", Obstacle.getMonsters().get(monsterID));
+        super(player, "River", Obstacle.getMonsters().get(monsterID), "Ancient Scroll");
     }
 }

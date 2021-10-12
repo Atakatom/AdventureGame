@@ -1,5 +1,7 @@
 import java.util.Scanner;
 
+import org.xml.sax.helpers.LocatorImpl;
+
 public class Game {
     private Scanner input = new Scanner(System.in);
     Player player;
@@ -10,6 +12,7 @@ public class Game {
         // System.out.print("Give us your name : ");
         // String playerName = input.nextLine();
         player = new Player("atakan");
+        player.warriorStatus();
         while (true) {
             System.out.println("\n################\tLocations\t################\n");
             System.out.println("-------------------------------------------------------\n");
@@ -19,6 +22,8 @@ public class Game {
             System.out.println("ID : 3 - Cave       --> Your award will be FOOD     but only if you survive >:)");
             System.out.println("ID : 4 - Forest     --> Your award will be FIREWOOD but only if you survive >:)");
             System.out.println("ID : 5 - River      --> Your award will be WATER    but only if you survive >:)");
+            System.out.println("\nID : 8 - Print Warrior Status");
+            System.out.println("ID : 9 - Print Inventory Items");
             System.out.println("\n-------------------------------------------------------");
             System.out.print("Write the id of the location would you like to go: ");
             int selectLoc = input.nextInt();
@@ -31,14 +36,28 @@ public class Game {
                     break;
                 case 3:
                     location = new Cave(player);
-
+                    break;
+                case 4:
+                    location = new Forest(player);
+                    break;
+                case 5:
+                    location = new River(player);
+                    break;
+                case 8:
+                    player.warriorStatus();
+                    break;
+                case 9:
+                    player.inventoryStatus();
             }
-            boolean exit = location.onLocation();
+            boolean exit;
+            if (location != null)
+                exit = location.onLocation();
+            else
+                exit = true;
             if (!exit || selectLoc == 0) {
                 System.out.printf("%n%n%60s%n%n", "GAME OVER !!!");
                 break;
             }
-            player.warriorStatus();
         }
     }
 

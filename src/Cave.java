@@ -1,7 +1,6 @@
 
 public class Cave extends BattleLoc {
-
-    static int monsterID = 0;
+    private static int monsterID = 0;
     static {
         for (int i = 0; i < Obstacle.getMonsters().size(); i++) {
             if (Obstacle.getMonsters().get(i).getName().toLowerCase().equals("zombie"))
@@ -10,7 +9,6 @@ public class Cave extends BattleLoc {
     }
 
     public Cave(Player player) {
-
-        super(player, "Cave", Obstacle.getMonsters().get(monsterID));
+        super(player, "Cave", Obstacle.getMonsters().get(monsterID), "Jewelry");
     }
 }

@@ -1,43 +1,30 @@
+import java.util.HashSet;
+
 public class Inventory {
-    boolean water;
-    boolean food;
-    boolean firewood;
+    HashSet<String> rewards = new HashSet<>();
     Weapon weapon;
     Armour armour;
 
     public Inventory() {
-        water = false;
-        food = false;
-        firewood = false;
         weapon = Weapon.defaultWeapon();
         armour = Armour.defaultArmour();
     }
 
-    public boolean doWeHaveWater() {
-        return water;
+    public void gainReward(String s) {
+        rewards.add(s);
+        System.out.println(s + " is added to your collection of rewards!");
     }
 
-    public void weGainedWater() {
-        water = true;
-        System.out.println("Water is added to your inventory...");
-    }
-
-    public boolean doWeHaveFood() {
-        return food;
-    }
-
-    public void weGainedFood() {
-        food = true;
-        System.out.println("Food is added to your inventory...");
-    }
-
-    public boolean doWeHaveFirewood() {
-        return firewood;
-    }
-
-    public void weGainedFirewood() {
-        firewood = true;
-        System.out.println("Firewood is added to your inventory...");
+    public void getRewards() {
+        if (rewards.size() > 0) {
+            System.out.println("\nThe rewards you gained through your adventures are : ");
+            for (String s : rewards) {
+                System.out.println(s + " is already obtained.");
+            }
+        } else {
+            System.out.println(
+                    "\nYou haven't gained any rewards yet! If you want to get some reward then go to an adventure!\n");
+        }
     }
 
     public void setWeapon(Weapon weapon) {

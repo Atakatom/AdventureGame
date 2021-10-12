@@ -8,6 +8,6 @@ public class Forest extends BattleLoc {
     }
 
     public Forest(Player player) {
-        super(player, "Forest", Obstacle.getMonsters().get(monsterID));
+        super(player, "Forest", Obstacle.getMonsters().get(monsterID), "Crown of the Ruler");
     }
 }
