@@ -1,7 +1,5 @@
 import java.util.Scanner;
 
-import org.xml.sax.helpers.LocatorImpl;
-
 public class Game {
     private Scanner input = new Scanner(System.in);
     Player player;
@@ -9,10 +7,9 @@ public class Game {
 
     public void start() {
         System.out.println("Welcome to the Adventure Game !");
-        // System.out.print("Give us your name : ");
-        // String playerName = input.nextLine();
-        player = new Player("atakan");
-        player.warriorStatus();
+        System.out.print("Give us your name : ");
+        String playerName = input.nextLine();
+        player = new Player(playerName);
         while (true) {
             System.out.println("\n################\tLocations\t################\n");
             System.out.println("-------------------------------------------------------\n");
@@ -49,12 +46,15 @@ public class Game {
                 case 9:
                     player.inventoryStatus();
             }
-            boolean exit;
-            if (location != null)
-                exit = location.onLocation();
-            else
-                exit = true;
-            if (!exit || selectLoc == 0) {
+            if (location != null) {
+                if (location.onLocation() == false) {
+                    System.out.printf("%n%n%60s%n%n", "YOU HAVE BEEN DEFEATED !!!");
+                    System.out.println("Your companion brought you to the safe house...");
+                    location = new SafeHouse(player);
+                    location.onLocation();
+                }
+            }
+            if (selectLoc == 0) {
                 System.out.printf("%n%n%60s%n%n", "GAME OVER !!!");
                 break;
             }

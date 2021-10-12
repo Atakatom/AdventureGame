@@ -84,7 +84,7 @@ public class BattleLoc extends Location {
                 System.out.printf("Enemies hit caused%2s damage%-10s", enemies[i].getDamage(), "");
                 this.getPlayer().setHealth(this.getPlayer().getHealth() - enemies[i].getDamage());
                 if (this.getPlayer().getHealth() < 0) {
-                    System.out.println("You are killed!!");
+                    System.out.println("You fainted!!");
                     return false;
                 } else
                     System.out.printf("Your remaining health is: %s%n", this.getPlayer().getHealth());
